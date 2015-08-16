@@ -1,0 +1,51 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true,
+    "arrowFunctions": true,
+    "classes": true,
+    "spread": true,
+    "defaultParams": true,
+    "blockBindings": true,
+    "superInFunctions": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "no-unused-expressions": 0,
+    "indent": [2, 2],
+    "brace-style": [2, "1tbs", { "allowSingleLine": true }],
+    "object-shorthand": [1, "properties"],
+    "object-curly-spacing": [1, "always", {
+      "objectsInObjects": false,
+      "arraysInObjects": true
+    }],
+    "react/display-name": 1,
+    "react/jsx-curly-spacing": [1, "always", {
+      "objectsInObjects": false,
+      "arraysInObjects": true
+    }],
+    "react/jsx-max-props-per-line": 1,
+    "react/jsx-no-duplicate-props": 1,
+    "react/jsx-no-undef": 1,
+    "react/jsx-quotes": 1,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
+    "react/no-unknown-property": 1,
+    "react/prop-types": 1,
+    "react/react-in-jsx-scope": 1,
+    "react/sort-comp": [1, {
+      "order": [
+        "lifecycle",
+        "everything-else",
+        "rendering"
+      ]
+    }]
+  }
+}
