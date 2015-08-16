@@ -4,6 +4,7 @@
   "description": "Todo application built with React and Firebase, written in ES6.",
   "main": "app.js",
   "scripts": {
+    "setup": "npm install && gulp serve",
     "start": "gulp serve",
     "build": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1",
