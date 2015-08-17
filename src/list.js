@@ -9,6 +9,7 @@ export default React.createClass({
   propTypes: {
     items: React.PropTypes.object,
     loaded: React.PropTypes.bool.isRequired,
+    uid: React.PropTypes.string.isRequired,
     clear: React.PropTypes.func.isRequired
   },
 
@@ -36,11 +37,12 @@ export default React.createClass({
   },
 
   renderTodos: function() {
-    return map(this.props.items, function(item, key) {
+    return map(this.props.items, (item, key) => {
       return(
         <Todo
           text={ item.text }
           done={ item.done }
+          uid={ this.props.uid }
           id={ key }
           key={ "item-" + key } />
       );

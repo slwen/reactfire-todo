@@ -8,6 +8,7 @@ export default React.createClass({
   propTypes: {
     text: React.PropTypes.string.isRequired,
     done: React.PropTypes.bool.isRequired,
+    uid: React.PropTypes.string.isRequired,
     id: React.PropTypes.string.isRequired
   },
 
@@ -20,7 +21,7 @@ export default React.createClass({
   },
 
   componentWillMount: function() {
-    this.fb = connect(this.props.id);
+    this.fb = connect(this.props.uid, this.props.id);
   },
 
   handleChecked: function(e) {
