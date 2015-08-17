@@ -2,10 +2,10 @@
 
 import React from 'react';
 import ReactFire from 'reactfire';
-import Header from './header';
-import List from './list';
-import { auth, connect } from './lib/fb';
 import ls from 'local-storage';
+import { auth, connect } from './lib/fb';
+import Header from './components/header';
+import List from './components/list';
 
 var App = React.createClass({
   displayName: 'App',
@@ -22,7 +22,7 @@ var App = React.createClass({
   componentWillMount: function() {
     if (this.state.user) {
       this.firebaseConnect();
-    }    
+    }
   },
 
   firebaseConnect: function() {
@@ -36,7 +36,7 @@ var App = React.createClass({
   },
 
   handleBulkDelete: function() {
-    for (var key in this.state.items) {
+    for (let key in this.state.items) {
       if (this.state.items[key].done) {
         this.fb.child(key).remove();
       }

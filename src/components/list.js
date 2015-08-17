@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { map, isEmpty } from 'lodash';
-import Todo from './todo';
+import Todo from '../components/todo';
 
 export default React.createClass({
   displayName: 'List',

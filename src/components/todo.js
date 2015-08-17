@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { connect } from './lib/fb';
+import { connect } from '../lib/fb';
 
 export default React.createClass({
   displayName: 'Todo',
