@@ -38,7 +38,7 @@ export default React.createClass({
 
   renderTodos: function() {
     return map(this.props.items, (item, key) => {
-      return(
+      return (
         <Todo
           text={ item.text }
           done={ item.done }
