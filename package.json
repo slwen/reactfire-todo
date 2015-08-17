@@ -1,6 +1,6 @@
 {
   "name": "reactfire-todo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Todo application built with React and Firebase, written in ES6.",
   "main": "app.js",
   "scripts": {
