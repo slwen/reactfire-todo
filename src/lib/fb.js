@@ -1,18 +1,17 @@
-"use strict";
+'use strict';
 
 import Firebase from 'firebase';
 
-const rootUrl = "https://amber-fire-8830.firebaseio.com/";
+const rootUrl = 'https://amber-fire-8830.firebaseio.com/';
 const ref     = new Firebase(rootUrl);
 
 /**
  * Authenticate user with GitHub.
  */
 export function auth(callback) {
-  ref.authWithOAuthPopup("github", function(error, authData) {
+  ref.authWithOAuthPopup('github', function(error, authData) {
     if (error) {
-      console.log("Login Failed!", error);
-      return;
+      console.log('Login Failed!', error);
     }
 
     callback(authData);
