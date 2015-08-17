@@ -2,9 +2,14 @@
 
 set -e
 
+export COMMENT=`git log -n 1 --format='%h %s'`
+
 git checkout master
 git pull
 git checkout gh-pages
 git rebase master
+NODE_ENV=production npm run build
+git add -A
+git commit -m "Rebuild from: $COMMENT" || echo 'nothing to commit'
 git push
 git checkout master

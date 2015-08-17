@@ -9,7 +9,7 @@
     "build": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src",
-    "deploy": "NODE_ENV=production gulp && bin/deploy"
+    "deploy": "bin/deploy"
   },
   "author": "Sam Enoka",
   "license": "ISC",
