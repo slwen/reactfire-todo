@@ -31,7 +31,6 @@
       "objectsInObjects": false,
       "arraysInObjects": true
     }],
-    "react/jsx-max-props-per-line": 1,
     "react/jsx-no-duplicate-props": 1,
     "react/jsx-no-undef": 1,
     "react/jsx-quotes": 1,

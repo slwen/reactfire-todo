@@ -25,7 +25,24 @@ export default React.createClass({
     }
   },
 
-  render() {
-    return <div>I'm a header.</div>;
+  handleInputChange: function(e) {
+    this.setState({ text: e.target.value });
+  },
+
+  render: function() {
+    return (
+      <form onSubmit={ this.handleSubmit }>
+        <input
+          value={ this.state.text }
+          onChange={ this.handleInputChange }
+          type="text" />
+
+        <span>
+          <button type="submit">
+            Add New
+          </button>
+        </span>
+      </form>
+    );
   }
 });
