@@ -8,7 +8,8 @@
     "start": "gulp serve",
     "build": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "deploy": "NODE_ENV=production gulp && bin/deploy"
   },
   "author": "Sam Enoka",
   "license": "ISC",
@@ -28,6 +29,7 @@
     "eslint-plugin-react": "^3.2.2",
     "gulp": "^3.9.0",
     "gulp-eslint": "^1.0.0",
+    "gulp-uglify": "^1.2.0",
     "rimraf": "^2.4.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",

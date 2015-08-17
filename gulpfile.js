@@ -7,10 +7,13 @@ var buffer      = require('vinyl-buffer');
 var browserify  = require('browserify');
 var watchify    = require('watchify');
 var babelify    = require('babelify');
+var uglify      = require('gulp-uglify');
 var eslint      = require('gulp-eslint');
 var rimraf      = require('rimraf');
 var assign      = require('lodash/object/assign');
 var browserSync = require('browser-sync');
+
+var production = (process.env.NODE_ENV === 'production');
 
 var config = {
   src: './src/app.js',
@@ -45,25 +48,39 @@ gulp.task('lint', function () {
  * Browserify and transpile ES6 -> ES5.
  * Watch JS changes with `watchify` for speedy builds.
  */
-var opts = assign({}, watchify.args, {
-  entries: [config.src],
-  debug: true
-});
+var runBrowserify = function() {
+  var bundler = browserify({
+    entries: [config.src],
+    debug: !production,
+    cache: {}, packageCache: {}, fullPaths: true // Watchify junk
+  }).transform(babelify);
 
-var b = watchify(browserify(opts)).transform(babelify);
-var bundle = function() {
-  return b.bundle()
-    .on('error', function(err) {
-      console.log('Error: ' + err.message);
-    })
-    .pipe(source(config.output))
-    .pipe(buffer())
-    .pipe(gulp.dest(config.dest))
-    .pipe(browserSync.stream());
+  var rebundle = function() {
+    bundler.bundle()
+      .on('error', function(err) {
+        console.log('Bundle Error: ' + err.message);
+      })
+      .pipe(source(config.output))
+      .pipe(buffer())
+      .pipe(gulp.dest(config.dest))
+      .pipe(browserSync.stream());
+  }
+
+  // Watch for changes if we're not in production
+  if (!production) {
+    bundler = watchify(bundler);
+    bundler.on('update', function() {
+      gulp.start('lint');
+      rebundle();
+    });
+  }
+
+  rebundle();
 };
 
-gulp.task('js', ['lint'], bundle);
-b.on('update', function() { gulp.start('js') });
+gulp.task('js', ['lint'], function() {
+  runBrowserify();
+});
 
 /**
  * Local server + watch for updates.
