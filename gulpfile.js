@@ -1,26 +1,28 @@
 'use strict';
 
-var fs          = require('fs');
-var gulp        = require('gulp');
-var gulpif      = require('gulp-if');
-var source      = require('vinyl-source-stream');
-var buffer      = require('vinyl-buffer');
-var browserify  = require('browserify');
-var watchify    = require('watchify');
-var babelify    = require('babelify');
-var uglify      = require('gulp-uglify');
-var eslint      = require('gulp-eslint');
-var rimraf      = require('rimraf');
-var assign      = require('lodash/object/assign');
-var browserSync = require('browser-sync');
-
-var production = (process.env.NODE_ENV === 'production');
+var fs           = require('fs');
+var gulp         = require('gulp');
+var gulpif       = require('gulp-if');
+var source       = require('vinyl-source-stream');
+var buffer       = require('vinyl-buffer');
+var browserify   = require('browserify');
+var watchify     = require('watchify');
+var babelify     = require('babelify');
+var uglify       = require('gulp-uglify');
+var eslint       = require('gulp-eslint');
+var sass         = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
+var rimraf       = require('rimraf');
+var assign       = require('lodash/object/assign');
+var browserSync  = require('browser-sync');
 
 var config = {
-  src: './src/app.js',
-  dest: './public/',
+  production: process.env.NODE_ENV === 'production',
+  input: './src/app.js',
   output: 'app.js',
-  bs: {
+  scss: './src/**/*.scss',
+  dest: './public/',
+  browserSync: {
     server: { baseDir: './' },
     open: false,
     notify: false
@@ -51,11 +53,11 @@ gulp.task('lint', function () {
  */
 var runBrowserify = function() {
   var bundler = browserify({
-    entries: [config.src],
-    debug: !production,
-    fullPaths: !production,
+    entries: [config.input],
+    debug: !config.production,
+    fullPaths: !config.production,
     cache: {},
-    packageCache: {}    
+    packageCache: {}
   }).transform(babelify);
 
   var rebundle = function() {
@@ -65,13 +67,13 @@ var runBrowserify = function() {
       })
       .pipe(source(config.output))
       .pipe(buffer())
-      .pipe(gulpif(production, uglify()))
+      .pipe(gulpif(config.production, uglify()))
       .pipe(gulp.dest(config.dest))
       .pipe(browserSync.stream());
   }
 
   // Watch for changes if we're not in production
-  if (!production) {
+  if (!config.production) {
     bundler = watchify(bundler);
     bundler.on('update', function() {
       gulp.start('lint');
@@ -86,9 +88,22 @@ gulp.task('js', ['lint'], function() {
   runBrowserify();
 });
 
+gulp.task('scss', function() {
+  gulp.src(config.scss)
+    .pipe(sass({
+      outputStyle: 'compressed'
+    }).on('error', sass.logError))
+    .pipe(autoprefixer())
+    .pipe(gulp.dest('./public'));
+});
+
+gulp.task('scss:watch', ['scss'], function () {
+  gulp.watch(config.scss, ['scss']).on('change', browserSync.reload);
+});
+
 /**
  * Local server + watch for updates.
  */
-gulp.task('serve', ['clean', 'js'], function () {
-  browserSync.init(config.bs);
+gulp.task('serve', ['clean', 'js', 'scss:watch'], function () {
+  browserSync.init(config.browserSync);
 });
