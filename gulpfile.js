@@ -53,7 +53,9 @@ var runBrowserify = function() {
   var bundler = browserify({
     entries: [config.src],
     debug: !production,
-    cache: {}, packageCache: {}, fullPaths: true // Watchify junk
+    fullPaths: !production,
+    cache: {},
+    packageCache: {}    
   }).transform(babelify);
 
   var rebundle = function() {
