@@ -2,6 +2,7 @@
 
 var fs          = require('fs');
 var gulp        = require('gulp');
+var gulpif      = require('gulp-if');
 var source      = require('vinyl-source-stream');
 var buffer      = require('vinyl-buffer');
 var browserify  = require('browserify');
@@ -62,6 +63,7 @@ var runBrowserify = function() {
       })
       .pipe(source(config.output))
       .pipe(buffer())
+      .pipe(gulpif(production, uglify()))
       .pipe(gulp.dest(config.dest))
       .pipe(browserSync.stream());
   }
