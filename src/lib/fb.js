@@ -9,7 +9,7 @@ const ref     = new Firebase(rootUrl);
  * Authenticate user with GitHub.
  */
 export function auth(callback) {
-  ref.authWithOAuthPopup('github', function(error, authData) {
+  ref.authWithOAuthPopup('github', (error, authData) => {
     if (error) {
       console.log('Login Failed!', error);
     }

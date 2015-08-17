@@ -8,11 +8,11 @@ export default React.createClass({
     itemsStore: React.PropTypes.object
   },
 
-  getInitialState: function() {
+  getInitialState() {
     return { text: '' };
   },
 
-  handleSubmit: function(e) {
+  handleSubmit(e) {
     e.preventDefault();
 
     if (this.state.text !== '') {
@@ -25,11 +25,11 @@ export default React.createClass({
     }
   },
 
-  handleInputChange: function(e) {
+  handleInputChange(e) {
     this.setState({ text: e.target.value });
   },
 
-  render: function() {
+  render() {
     return (
       <form onSubmit={ this.handleSubmit }>
         <input

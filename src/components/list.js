@@ -13,7 +13,7 @@ export default React.createClass({
     clear: React.PropTypes.func.isRequired
   },
 
-  completedCounter: function(items) {
+  completedCounter(items) {
     let completedCount = 0;
 
     for (let key in items) {
@@ -23,7 +23,7 @@ export default React.createClass({
     return completedCount;
   },
 
-  renderClearButton: function() {
+  renderClearButton() {
     let buttonState = this.completedCounter(this.props.items) ? '' : 'disabled';
 
     return (
@@ -36,7 +36,7 @@ export default React.createClass({
     );
   },
 
-  renderTodos: function() {
+  renderTodos() {
     return map(this.props.items, (item, key) => {
       return (
         <Todo
@@ -49,7 +49,7 @@ export default React.createClass({
     });
   },
 
-  render: function() {
+  render() {
     if (isEmpty(this.props.items) && this.props.loaded) {
       return (
         <div>

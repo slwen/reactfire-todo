@@ -11,7 +11,7 @@ var App = React.createClass({
   displayName: 'App',
   mixins: [ ReactFire ],
 
-  getInitialState: function() {
+  getInitialState() {
     return {
       items: {},
       loaded: false,
@@ -19,23 +19,23 @@ var App = React.createClass({
     };
   },
 
-  componentWillMount: function() {
+  componentWillMount() {
     if (this.state.user) {
       this.firebaseConnect();
     }
   },
 
-  firebaseConnect: function() {
+  firebaseConnect() {
     this.fb = connect(this.state.user.auth.uid);
     this.bindAsObject(this.fb, 'items');
     this.fb.on('value', this.handleDataLoaded);
   },
 
-  handleDataLoaded: function() {
+  handleDataLoaded() {
     this.setState({ loaded: true });
   },
 
-  handleBulkDelete: function() {
+  handleBulkDelete() {
     for (let key in this.state.items) {
       if (this.state.items[key].done) {
         this.fb.child(key).remove();
@@ -43,7 +43,7 @@ var App = React.createClass({
     }
   },
 
-  handleAuth: function() {
+  handleAuth() {
     if (this.state.user) {
       console.log('already logged in');
     } else {
@@ -55,7 +55,7 @@ var App = React.createClass({
     }
   },
 
-  renderAuthenticated: function() {
+  renderAuthenticated() {
     if (this.state.user) {
       return (
         <div>
@@ -72,7 +72,7 @@ var App = React.createClass({
     }
   },
 
-  render: function() {
+  render() {
     return (
       <div>
         <button type="button" onClick={ this.handleAuth }>

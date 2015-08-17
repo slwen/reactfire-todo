@@ -12,7 +12,7 @@ export default React.createClass({
     id: React.PropTypes.string.isRequired
   },
 
-  getInitialState: function() {
+  getInitialState() {
     return {
       text: this.props.text,
       done: this.props.done,
@@ -20,21 +20,21 @@ export default React.createClass({
     };
   },
 
-  componentWillMount: function() {
+  componentWillMount() {
     this.fb = connect(this.props.uid, this.props.id);
   },
 
-  handleChecked: function(e) {
+  handleChecked(e) {
     let update = { done: e.target.checked }
     this.setState(update);
     this.fb.update(update);
   },
 
-  handleDelete: function() {
+  handleDelete() {
     this.fb.remove();
   },
 
-  handleEdit: function(e) {
+  handleEdit(e) {
     let value = e.target.value;
 
     this.setState({
@@ -43,14 +43,14 @@ export default React.createClass({
     });
   },
 
-  handleSave: function() {
+  handleSave() {
     if (this.state.edited) {
       this.fb.update({ text: this.state.text });
       this.setState({ edited: false });
     }
   },
 
-  renderActionButton: function() {
+  renderActionButton() {
     if (this.state.done) {
       return (
         <button
@@ -62,7 +62,7 @@ export default React.createClass({
     }
   },
 
-  render: function() {
+  render() {
     return (
       <li>
         <div>
