@@ -2,6 +2,7 @@
 
 var fs           = require('fs');
 var gulp         = require('gulp');
+var ghPages      = require('gulp-gh-pages');
 var gulpif       = require('gulp-if');
 var source       = require('vinyl-source-stream');
 var buffer       = require('vinyl-buffer');
@@ -106,4 +107,12 @@ gulp.task('scss:watch', ['scss'], function () {
  */
 gulp.task('serve', ['clean', 'js', 'scss:watch'], function () {
   browserSync.init(config.browserSync);
+});
+
+/**
+ * Deploy output files to gh-pages.
+ */
+gulp.task('deploy', function() {
+  return gulp.src(config.dest + '**/*')
+    .pipe(ghPages());
 });
