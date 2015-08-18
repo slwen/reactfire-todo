@@ -12,23 +12,29 @@ var App = React.createClass({
   mixins: [ ReactFire ],
 
   getInitialState() {
+    let user = ls.get('user');
+
     return {
       items: {},
       loaded: false,
-      user: ls.get('user') || null
+      user: (user && user.expires < Date.now()) ? user : null
     };
   },
 
   componentWillMount() {
-    if (this.state.user) {
-      this.firebaseConnect();
-    }
+    this.firebaseConnect();
+  },
+
+  firebaseDisconnect() {
+    this.setState({ user: null });
   },
 
   firebaseConnect() {
-    this.fb = connect(this.state.user.auth.uid);
-    this.bindAsObject(this.fb, 'items');
-    this.fb.on('value', this.handleDataLoaded);
+    if (this.state.user) {
+      this.fb = connect(this.state.user.auth.uid);
+      this.bindAsObject(this.fb, 'items', this.firebaseDisconnect);
+      this.fb.on('value', this.handleDataLoaded);
+    }
   },
 
   handleDataLoaded() {
