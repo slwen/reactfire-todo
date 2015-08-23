@@ -2,6 +2,7 @@
 
 var fs           = require('fs');
 var gulp         = require('gulp');
+var gutil        = require('gulp-util');
 var ghPages      = require('gulp-gh-pages');
 var gulpif       = require('gulp-if');
 var source       = require('vinyl-source-stream');
@@ -16,32 +17,29 @@ var autoprefixer = require('gulp-autoprefixer');
 var rimraf       = require('rimraf');
 var assign       = require('lodash/object/assign');
 var browserSync  = require('browser-sync');
+var imagemin     = require('gulp-imagemin');
 
 var config = {
-  production: process.env.NODE_ENV === 'production',
+  production: !!gutil.env.production,
   input: './src/app.js',
   output: 'app.js',
   scss: './src/**/*.scss',
+  html: './src/**/*.html',
+  images: './src/images/*',
   dest: './public/',
   browserSync: {
-    server: { baseDir: './' },
+    server: { baseDir: './public/' },
     open: false,
     notify: false
   }
 };
 
-gulp.task('default', ['clean' ,'js']);
+gulp.task('default', ['lint', 'js', 'scss', 'images', 'html']);
 
-/**
- * Delete (or clean out) the output directory.
- */
 gulp.task('clean', function(cb){
   rimraf(config.dest, cb);
 });
 
-/**
- * Run ES6/JavaScript linter.
- */
 gulp.task('lint', function () {
   return gulp.src(['./src/*.js'])
     .pipe(eslint({ useEslintrc: true }))
@@ -73,7 +71,6 @@ var runBrowserify = function() {
       .pipe(browserSync.stream());
   }
 
-  // Watch for changes if we're not in production
   if (!config.production) {
     bundler = watchify(bundler);
     bundler.on('update', function() {
@@ -95,23 +92,32 @@ gulp.task('scss', function() {
       outputStyle: 'compressed'
     }).on('error', sass.logError))
     .pipe(autoprefixer())
-    .pipe(gulp.dest('./public'));
+    .pipe(gulp.dest('./public'))
+    .pipe(browserSync.stream());
 });
 
-gulp.task('scss:watch', ['scss'], function () {
-  gulp.watch(config.scss, ['scss']).on('change', browserSync.reload);
+gulp.task('images', function() {
+  return gulp.src(config.images)
+    .pipe(imagemin())
+    .pipe(gulp.dest(config.dest + '/images'))
+    .pipe(browserSync.stream());
 });
 
-/**
- * Local server + watch for updates.
- */
-gulp.task('serve', ['clean', 'js', 'scss:watch'], function () {
+gulp.task('html', function() {
+  return gulp.src(config.html)
+    .pipe(gulp.dest(config.dest));
+});
+
+gulp.task('watch', ['js'], function () {
+  gulp.watch(config.scss, ['scss']);
+  gulp.watch(config.images, ['images']);
+  gulp.watch(config.html, ['html']).on('change', browserSync.reload);
+});
+
+gulp.task('serve', ['clean', 'default', 'watch'], function () {
   browserSync.init(config.browserSync);
 });
 
-/**
- * Deploy output files to gh-pages.
- */
 gulp.task('deploy', function() {
   return gulp.src(config.dest + '**/*')
     .pipe(ghPages());

@@ -6,10 +6,10 @@
   "scripts": {
     "setup": "npm install && gulp serve",
     "start": "gulp serve",
-    "build": "gulp",
+    "build": "gulp clean && gulp --production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src",
-    "deploy": "gulp deploy"
+    "deploy": "gulp --production && gulp deploy"
   },
   "author": "Sam Enoka",
   "license": "ISC",
@@ -33,9 +33,11 @@
     "gulp-eslint": "^1.0.0",
     "gulp-gh-pages": "^0.5.2",
     "gulp-if": "^1.2.5",
+    "gulp-imagemin": "^2.3.0",
     "gulp-minify-css": "^1.2.0",
     "gulp-sass": "^2.0.4",
     "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.6",
     "rimraf": "^2.4.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
