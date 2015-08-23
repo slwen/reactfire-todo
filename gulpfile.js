@@ -114,7 +114,7 @@ gulp.task('watch', ['js'], function () {
   gulp.watch(config.html, ['html']).on('change', browserSync.reload);
 });
 
-gulp.task('serve', ['clean', 'default', 'watch'], function () {
+gulp.task('serve', ['default', 'watch'], function () {
   browserSync.init(config.browserSync);
 });
 

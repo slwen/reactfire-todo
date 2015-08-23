@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "setup": "npm install && gulp serve",
-    "start": "gulp serve",
+    "start": "gulp clean && gulp serve",
     "build": "gulp clean && gulp --production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src",
