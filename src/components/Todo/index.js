@@ -54,33 +54,31 @@ export default React.createClass({
     return (
       <button
         type="button"
-        onClick={ this.handleDelete }>
-        Delete
+        onClick={ this.handleDelete }
+        className="Todo__delete-btn">
+        <img src="images/trash.svg" />
       </button>
     );
   },
 
   render() {
     return (
-      <li>
-        <div>
-          <span>
-            <input
-              type="checkbox"
-              onChange={ this.handleChecked }
-              checked={ this.state.done } />
-          </span>
-
+      <li className="Todo">
+        <label className="Todo__checkbox">
           <input
-            type="text"
-            value={ this.state.text }
-            onChange={ this.handleEdit }
-            onBlur={ this.handleSave } />
+            type="checkbox"
+            onChange={ this.handleChecked }
+            checked={ this.state.done } />
+        </label>
 
-          <div>
-            { this.renderActionButton() }
-          </div>
-        </div>
+        <input
+          type="text"
+          value={ this.state.text }
+          onChange={ this.handleEdit }
+          onBlur={ this.handleSave }
+          className="Todo__input" />
+
+        { this.renderActionButton() }
       </li>
     );
   }

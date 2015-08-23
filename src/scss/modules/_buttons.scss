@@ -1,0 +1,28 @@
+%button {
+  display: inline-block;
+  webkit-appearance: none;
+  border: 1px solid $fireRed;
+  color: $fireRed;
+  padding: $x3;
+  margin: 0;
+  background: transparent;
+  border-radius: $x1;
+  font-size: $x4;
+  line-height: 1;
+  cursor: pointer;
+
+  & > * {
+    vertical-align: middle;
+  }
+}
+
+%secondary-button {
+  @extend %button;
+  border-color: #fff;
+  color: #fff;
+}
+
+%transparent-button {
+  @extend %button;
+  border: 0;
+}

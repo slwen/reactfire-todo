@@ -1,5 +1,16 @@
 @import "scss/variables";
+@import "scss/type";
+@import "scss/modules";
+@import "scss/components";
 
 body {
-  background: $fireBrick;
+  background: darken($sunBurn, 5%);
+}
+
+.App {
+  width: $document-width;
+  height: $document-height;
+  margin: $x8 auto;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(#000, 0.15);
 }

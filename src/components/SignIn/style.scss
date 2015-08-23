@@ -1,0 +1,25 @@
+.SignIn {
+  box-sizing: border-box;
+  width: $document-width;
+  height: $document-height;
+  padding: $x8;
+  background: $fireRed;
+  color: #fff;
+  text-align: center;
+}
+
+.SignIn__title {
+  margin-bottom: $x4;
+}
+
+.SignIn__body {
+  position: relative;
+  height: 75px;
+  margin-top: -75px;
+  top: 50%;
+}
+
+.SignIn__button {
+  @extend %secondary-button;
+  width: 100%;
+}

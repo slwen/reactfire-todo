@@ -1,0 +1,10 @@
+.Todo {
+  display: block;
+  background: #fff;
+  border-bottom: 1px solid $steam;
+  padding: $x6;
+}
+
+.Todo__delete-btn {
+  @extend %transparent-button;
+}

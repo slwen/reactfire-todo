@@ -14,14 +14,17 @@ export default React.createClass({
 
   render() {
     return (
-      <div className="signIn">
-        <button
-          className="signIn__button"
-          type="button"
-          onClick={ this.handleClick }>
-          <img src="images/github.svg" />
-          Sign in with GitHub
-        </button>
+      <div className="SignIn">
+        <div className="SignIn__body">
+          <h1 className="SignIn__title">Reactfire Todo</h1>
+          <button
+            className="SignIn__button"
+            type="button"
+            onClick={ this.handleClick }>
+            <img src="images/github.svg" />
+            &nbsp; Sign in with GitHub
+          </button>
+        </div>
       </div>
     );
   }
