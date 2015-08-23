@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { connect } from '../lib/fb';
+import { connect } from '../../lib/fb';
 
 export default React.createClass({
   displayName: 'Todo',
@@ -51,15 +51,13 @@ export default React.createClass({
   },
 
   renderActionButton() {
-    if (this.state.done) {
-      return (
-        <button
-          type="button"
-          onClick={ this.handleDelete }>
-          Delete
-        </button>
-      );
-    }
+    return (
+      <button
+        type="button"
+        onClick={ this.handleDelete }>
+        Delete
+      </button>
+    );
   },
 
   render() {

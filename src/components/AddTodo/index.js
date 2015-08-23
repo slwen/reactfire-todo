@@ -3,7 +3,7 @@
 import React from 'react';
 
 export default React.createClass({
-  displayName: 'Header',
+  displayName: 'AddTodo',
   propTypes: {
     itemsStore: React.PropTypes.object
   },
@@ -31,15 +31,19 @@ export default React.createClass({
 
   render() {
     return (
-      <form onSubmit={ this.handleSubmit }>
+      <form onSubmit={ this.handleSubmit } className="AddTodo">
         <input
           value={ this.state.text }
           onChange={ this.handleInputChange }
-          type="text" />
+          type="text"
+          className="AddTodo__input" />
 
         <span>
-          <button type="submit">
-            Add New
+          <button
+            type="submit"
+            title="Add New"
+            className="AddTodo__btn">
+            <img src="images/add.svg" />
           </button>
         </span>
       </form>

@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { map, isEmpty } from 'lodash';
-import Todo from '../components/todo';
+import AddTodo from '../AddTodo';
+import Todo from '../Todo';
 
 export default React.createClass({
   displayName: 'List',
@@ -24,13 +25,14 @@ export default React.createClass({
   },
 
   renderClearButton() {
-    let buttonState = this.completedCounter(this.props.items) ? '' : 'disabled';
+    let disabled = !this.completedCounter(this.props.items);
 
     return (
       <button
         type="button"
         onClick={ this.props.clear }
-        disabled={ buttonState }>
+        disabled={ disabled }
+        className="List__clear-btn">
         Clear Completed Todos
       </button>
     );
@@ -52,7 +54,7 @@ export default React.createClass({
   render() {
     if (isEmpty(this.props.items) && this.props.loaded) {
       return (
-        <div>
+        <div className="List List--empty">
           No todos! Good job!
         </div>
       );
@@ -60,11 +62,12 @@ export default React.createClass({
 
     if (this.props.loaded) {
       return (
-        <div>
-          <ul>
+        <div className="List">
+          <ul className="List__list-items">
             { this.renderTodos() }
           </ul>
-          <div>
+          <AddTodo itemsStore={ this.props.itemStore } />
+          <div className="List__clear">
             { this.renderClearButton() }
           </div>
         </div>

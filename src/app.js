@@ -4,8 +4,9 @@ import React from 'react';
 import ReactFire from 'reactfire';
 import ls from 'local-storage';
 import { auth, connect } from './lib/fb';
-import Header from './components/header';
-import List from './components/list';
+import Header from './components/Header';
+import SignIn from './components/SignIn';
+import List from './components/List';
 
 var App = React.createClass({
   displayName: 'App',
@@ -64,11 +65,10 @@ var App = React.createClass({
   renderAuthenticated() {
     if (this.state.user) {
       return (
-        <div>
-          <div>
-            <Header itemsStore={ this.firebaseRefs.items } />
-          </div>
+        <div className="signedIn">
+          <Header name={ this.state.user.github.displayName } />
           <List
+            itemStore={ this.firebaseRefs.items }
             items={ this.state.items }
             loaded={ this.state.loaded }
             clear={ this.handleBulkDelete }
@@ -76,14 +76,13 @@ var App = React.createClass({
         </div>
       );
     }
+
+    return <SignIn handleClick={ this.handleAuth } />;
   },
 
   render() {
     return (
-      <div>
-        <button type="button" onClick={ this.handleAuth }>
-          Login
-        </button>
+      <div className="App">
         { this.renderAuthenticated() }
       </div>
     );
