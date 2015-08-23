@@ -87,7 +87,7 @@ gulp.task('js', ['lint'], function() {
 });
 
 gulp.task('scss', function() {
-  gulp.src(config.scss)
+  gulp.src('./src/app.scss')
     .pipe(sass({
       outputStyle: 'compressed'
     }).on('error', sass.logError))
