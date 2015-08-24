@@ -5,6 +5,19 @@
   padding: $x6;
 }
 
+.Todo__input {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 80%;
+  padding: $x2;
+  font-size: $text-base;
+  border: 0;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
 .Todo__delete-btn {
   @extend %transparent-button;
 }
