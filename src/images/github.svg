@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
-    <title></title>
-    <desc>Created with Sketch.</desc>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="login-screen" sketch:type="MSArtboardGroup" transform="translate(-101.000000, -329.000000)" font-weight="normal" font-family="FontAwesome" font-size="24" fill="#FFFFFF">
-            <g id="Sign-in-with-GitHub-+-" sketch:type="MSLayerGroup" transform="translate(102.000000, 328.000000)">
-                <text id="" sketch:type="MSTextLayer">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="24" font-family="FontAwesome" font-weight="normal">
+        <g transform="translate(-101.000000, -329.000000)" fill="#FFFFFF">
+            <g transform="translate(102.000000, 328.000000)">
+                <text>
                     <tspan x="0" y="21"></tspan>
                 </text>
             </g>
