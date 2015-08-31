@@ -56,6 +56,7 @@ export default React.createClass({
       return (
         <div className="List List--empty">
           No todos! Good job!
+          <AddTodo itemsStore={ this.props.itemStore } />
         </div>
       );
     }
