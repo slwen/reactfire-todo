@@ -1,0 +1,17 @@
+@mixin breakpoint($point) {
+  @if $point == desk {
+    @media (max-width: 1600px) {
+      @content;
+    }
+  }
+  @else if $point == lap {
+    @media (max-width: 1250px) {
+      @content;
+    }
+  }
+  @else if $point == palm {
+    @media (max-width: 650px) {
+      @content;
+    }
+  }
+}

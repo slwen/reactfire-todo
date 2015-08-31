@@ -1,7 +1,13 @@
 @import "scss/variables";
+@import "scss/mixins";
 @import "scss/type";
 @import "scss/modules";
 @import "scss/components";
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
 
 body {
   background: darken($sunBurn, 5%);
@@ -13,4 +19,8 @@ body {
   margin: $x8 auto;
   background: #fff;
   box-shadow: 0 2px 5px rgba(#000, 0.15);
+
+  @include breakpoint(palm) {
+    margin: 0;
+  }
 }

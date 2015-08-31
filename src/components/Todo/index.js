@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { connect } from '../../lib/fb';
+import Checkbox from '../Checkbox';
 
 export default React.createClass({
   displayName: 'Todo',
@@ -64,12 +65,11 @@ export default React.createClass({
   render() {
     return (
       <li className="Todo">
-        <label className="Todo__checkbox">
-          <input
-            type="checkbox"
-            onChange={ this.handleChecked }
-            checked={ this.state.done } />
-        </label>
+
+        <Checkbox
+          checked={ this.state.done }
+          onChange={ this.handleChecked }
+        />
 
         <input
           type="text"
