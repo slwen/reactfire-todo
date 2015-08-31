@@ -1,4 +1,8 @@
 .Checkbox {
+  display: inline-block;
+  padding-right: $x4;
+  vertical-align: middle;
+
   input {
     display: none;
   }

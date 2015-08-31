@@ -63,6 +63,8 @@ export default React.createClass({
   },
 
   render() {
+    let doneClass = this.state.done ? 'Todo__input--done' : '';
+
     return (
       <li className="Todo">
 
@@ -76,7 +78,7 @@ export default React.createClass({
           value={ this.state.text }
           onChange={ this.handleEdit }
           onBlur={ this.handleSave }
-          className="Todo__input" />
+          className={ "Todo__input " + doneClass } />
 
         { this.renderActionButton() }
       </li>

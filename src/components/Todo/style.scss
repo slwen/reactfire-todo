@@ -8,14 +8,19 @@
 .Todo__input {
   box-sizing: border-box;
   display: inline-block;
-  width: 80%;
+  width: 76%;
   padding: $x2;
   font-size: $text-base;
   border: 0;
 
   &:focus {
-    box-shadow: none;
+    outline: none;
+    text-decoration: none;
   }
+}
+
+.Todo__input--done {
+  text-decoration: line-through;
 }
 
 .Todo__delete-btn {
