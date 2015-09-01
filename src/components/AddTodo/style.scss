@@ -6,10 +6,10 @@
 }
 
 .AddTodo__input {
-  margin-left: $x8;
+  margin-left: $x8 + 10px;
   box-sizing: border-box;
   display: inline-block;
-  width: 76%;
+  width: 74%;
   padding: $x2;
   font-size: $text-base;
   border: 0;
