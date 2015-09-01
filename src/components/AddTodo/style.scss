@@ -1,3 +1,26 @@
+.AddTodo {
+  display: block;
+  background: #fff;
+  border-bottom: 1px solid $steam;
+  padding: $x6;
+}
+
+.AddTodo__input {
+  margin-left: $x8;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 76%;
+  padding: $x2;
+  font-size: $text-base;
+  border: 0;
+
+  &:focus {
+    outline: none;
+    text-decoration: none;
+  }
+}
+
+
 .AddTodo__btn {
   @extend %button;
 }

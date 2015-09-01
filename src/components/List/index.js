@@ -1,9 +1,11 @@
 'use strict';
 
-import React from 'react';
+import React from 'react/addons';
 import { map, isEmpty } from 'lodash';
 import AddTodo from '../AddTodo';
 import Todo from '../Todo';
+
+const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 export default React.createClass({
   displayName: 'List',
@@ -65,7 +67,9 @@ export default React.createClass({
       return (
         <div className="List">
           <ul className="List__list-items">
-            { this.renderTodos() }
+            <ReactCSSTransitionGroup transitionName="Todo">
+              { this.renderTodos() }
+            </ReactCSSTransitionGroup>
           </ul>
           <AddTodo itemsStore={ this.props.itemStore } />
           <div className="List__clear">

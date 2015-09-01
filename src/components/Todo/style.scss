@@ -26,3 +26,25 @@
 .Todo__delete-btn {
   @extend %transparent-button;
 }
+
+.Todo-enter {
+  opacity: 0.01;
+  transform: scale(0.5) translateY(-50px);
+}
+
+.Todo-enter.Todo-enter-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition: all 200ms ease-in-out;
+}
+
+.Todo-leave {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.Todo-leave.Todo-leave-active {
+  opacity: 0.01;
+  transform: scale(0.5) translateY(-50px);
+  transition: all 200ms ease-in-out;
+}

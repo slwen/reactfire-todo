@@ -36,7 +36,8 @@ export default React.createClass({
           value={ this.state.text }
           onChange={ this.handleInputChange }
           type="text"
-          className="AddTodo__input" />
+          className="AddTodo__input"
+          placeholder="Add a new todo..." />
 
         <span>
           <button
