@@ -34,6 +34,8 @@ var config = {
   }
 };
 
+process.env.NODE_ENV = config.production ? 'production' : 'development';
+
 gulp.task('default', ['lint', 'js', 'scss', 'images', 'html']);
 
 gulp.task('clean', function(cb){
@@ -50,7 +52,7 @@ gulp.task('lint', function () {
  * Browserify and transpile ES6 -> ES5.
  * Watch JS changes with `watchify` for speedy builds.
  */
-var runBrowserify = function() {
+gulp.task('js', ['lint'], function() {
   var bundler = browserify({
     entries: [config.input],
     debug: !config.production,
@@ -60,7 +62,7 @@ var runBrowserify = function() {
   }).transform(babelify);
 
   var rebundle = function() {
-    bundler.bundle()
+    return bundler.bundle()
       .on('error', function(err) {
         console.log('Bundle Error: ' + err.message);
       })
@@ -79,11 +81,7 @@ var runBrowserify = function() {
     });
   }
 
-  rebundle();
-};
-
-gulp.task('js', ['lint'], function() {
-  runBrowserify();
+  return rebundle();
 });
 
 gulp.task('scss', function() {
