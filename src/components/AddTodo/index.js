@@ -5,7 +5,8 @@ import React from 'react';
 export default React.createClass({
   displayName: 'AddTodo',
   propTypes: {
-    itemsStore: React.PropTypes.object
+    itemsStore: React.PropTypes.object,
+    updateScroll: React.PropTypes.func.isRequired
   },
 
   getInitialState() {
@@ -22,6 +23,7 @@ export default React.createClass({
       });
 
       this.setState({ text: '' });
+      this.props.updateScroll();
     }
   },
 

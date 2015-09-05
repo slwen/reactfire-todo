@@ -19,6 +19,7 @@ body {
   background: #fff;
   box-shadow: 0 2px 5px rgba(#000, 0.15);
   position: relative;
+  overflow: hidden;
   animation: fadeIn 200ms ease-in;
 
   @include breakpoint(palm) {

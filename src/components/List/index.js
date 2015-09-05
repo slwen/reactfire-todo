@@ -15,6 +15,13 @@ export default React.createClass({
     clear: React.PropTypes.func.isRequired
   },
 
+  updateScroll() {
+    var node = this.refs.listItems.getDOMNode();
+    setTimeout(() => {
+      node.scrollTop = node.scrollHeight;
+    }, 50);
+  },
+
   completedCounter(items) {
     let completedCount = 0;
 
@@ -23,20 +30,6 @@ export default React.createClass({
     }
 
     return completedCount;
-  },
-
-  renderClearButton() {
-    let disabled = !this.completedCounter(this.props.items);
-
-    return (
-      <button
-        type="button"
-        onClick={ this.props.clear }
-        disabled={ disabled }
-        className="List__clear-btn">
-        Clear Completed Todos
-      </button>
-    );
   },
 
   renderTodos() {
@@ -53,6 +46,9 @@ export default React.createClass({
   },
 
   render() {
+    let completed = this.completedCounter(this.props.items);
+    let hasCompletedClass = completed ? 'List--hasCompleted' : '';
+
     if (isEmpty(this.props.items)) {
       return (
         <div className="List List--empty">
@@ -63,16 +59,24 @@ export default React.createClass({
     }
 
     return (
-      <div className="List">
-        <ul className="List__list-items">
+      <div className={ "List " + hasCompletedClass }>
+        <ul className="List__list-items" ref="listItems">
           <ReactCSSTransitionGroup transitionName="Todo">
             { this.renderTodos() }
           </ReactCSSTransitionGroup>
         </ul>
-        <AddTodo itemsStore={ this.props.itemStore } />
-        <div className="List__clear">
-          { this.renderClearButton() }
-        </div>
+
+        <AddTodo
+          itemsStore={ this.props.itemStore }
+          updateScroll={ this.updateScroll } />
+
+        <button
+          type="button"
+          onClick={ this.props.clear }
+          disabled={ !completed }
+          className="List__clear-btn">
+          Clear { completed } Completed Todos
+        </button>
       </div>
     );
   }
