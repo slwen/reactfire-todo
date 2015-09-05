@@ -11,7 +11,6 @@ export default React.createClass({
   displayName: 'List',
   propTypes: {
     items: React.PropTypes.object,
-    loaded: React.PropTypes.bool.isRequired,
     uid: React.PropTypes.string.isRequired,
     clear: React.PropTypes.func.isRequired
   },
@@ -54,7 +53,7 @@ export default React.createClass({
   },
 
   render() {
-    if (isEmpty(this.props.items) && this.props.loaded) {
+    if (isEmpty(this.props.items)) {
       return (
         <div className="List List--empty">
           No todos! Good job!
@@ -63,22 +62,18 @@ export default React.createClass({
       );
     }
 
-    if (this.props.loaded) {
-      return (
-        <div className="List">
-          <ul className="List__list-items">
-            <ReactCSSTransitionGroup transitionName="Todo">
-              { this.renderTodos() }
-            </ReactCSSTransitionGroup>
-          </ul>
-          <AddTodo itemsStore={ this.props.itemStore } />
-          <div className="List__clear">
-            { this.renderClearButton() }
-          </div>
+    return (
+      <div className="List">
+        <ul className="List__list-items">
+          <ReactCSSTransitionGroup transitionName="Todo">
+            { this.renderTodos() }
+          </ReactCSSTransitionGroup>
+        </ul>
+        <AddTodo itemsStore={ this.props.itemStore } />
+        <div className="List__clear">
+          { this.renderClearButton() }
         </div>
-      );
-    }
-
-    return <div>Loading...</div>;
+      </div>
+    );
   }
 });

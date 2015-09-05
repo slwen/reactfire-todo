@@ -8,6 +8,8 @@ import Header from './components/Header';
 import SignIn from './components/SignIn';
 import List from './components/List';
 
+const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 var App = React.createClass({
   displayName: 'App',
   mixins: [ ReactFire ],
@@ -62,28 +64,36 @@ var App = React.createClass({
     }
   },
 
-  renderAuthenticated() {
-    if (this.state.user) {
+  render() {
+    let state = this.state;
+
+    if (this.state.user && this.state.loaded) {
       return (
-        <div className="signedIn">
+        <div className="App App--signed-in">
           <Header name={ this.state.user.github.displayName } />
           <List
             itemStore={ this.firebaseRefs.items }
             items={ this.state.items }
-            loaded={ this.state.loaded }
             clear={ this.handleBulkDelete }
             uid={ this.state.user.auth.uid } />
         </div>
       );
     }
 
-    return <SignIn handleClick={ this.handleAuth } />;
-  },
+    if (this.state.user && !this.state.loaded) {
+      return (
+        <div className="App App--loading">
+          <div className="App__loading-body">
+            <div className="App__loading-spinner"></div>
+            <div>loading</div>
+          </div>
+        </div>
+      );
+    }
 
-  render() {
     return (
       <div className="App">
-        { this.renderAuthenticated() }
+        <SignIn handleClick={ this.handleAuth } />
       </div>
     );
   }

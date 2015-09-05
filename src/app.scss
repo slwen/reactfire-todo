@@ -19,8 +19,50 @@ body {
   background: #fff;
   box-shadow: 0 2px 5px rgba(#000, 0.15);
   position: relative;
+  animation: fadeIn 200ms ease-in;
 
   @include breakpoint(palm) {
     margin: 0;
+  }
+}
+
+.App--signed-in *,
+.App--loading * {
+  animation: fadeIn 200ms ease-in-out;
+}
+
+.App__loading-body {
+  width: 64px;
+  height: 64px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -32px;
+  margin-left: -32px;
+  color: $fireRed;
+}
+
+.App__loading-spinner {
+  margin-bottom: $x3;
+
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    width: $x4;
+    height: $x2;
+    margin: 0 auto;
+    background: $fireRed;
+  }
+
+  &:before {
+    top: $x2;
+    animation: loading 2s ease-in-out 0.5s infinite;
+  }
+
+  &:after {
+    top: $x4;
+    animation: loading 2s ease-in-out infinite;
   }
 }
