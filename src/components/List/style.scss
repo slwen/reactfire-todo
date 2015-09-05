@@ -14,8 +14,10 @@
   box-sizing: border-box;
   display: block;
   background: $sunBurn;
+  color: $fireRed;
   border: 0;
   outline: 0;
+  cursor: pointer;
   width: 100%;
   padding: $x6;
   font-size: $text-base;
@@ -26,5 +28,13 @@
   &[disabled] {
     transform: translateY(70px);
     opacity: 0;
+  }
+
+  .clearIcon {
+    fill: $fireRed;
+    border: 1px solid $fireRed;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-left: $x3;
   }
 }

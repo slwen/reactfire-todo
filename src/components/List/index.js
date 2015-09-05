@@ -75,7 +75,12 @@ export default React.createClass({
           onClick={ this.props.clear }
           disabled={ !completed }
           className="List__clear-btn">
-          Clear { completed } Completed Todos
+          Clear { completed } Completed
+
+          <svg width="23" height="23" viewBox="0 0 23 23" className="clearIcon">
+            <path d="M18.28 6.26C17.94 5.91 17.38 5.91 17.03 6.26L9.53 13.84 6.51 10.79C6.16 10.44 5.6 10.44 5.26 10.79 4.91 11.14 4.91 11.7 5.26 12.05L8.91 15.74C9.08 15.91 9.3 16 9.53 16 9.76 16 9.98 15.91 10.16 15.74L18.28 7.53C18.63 7.18 18.63 6.61 18.28 6.26L18.28 6.26Z"/>
+          </svg>
+
         </button>
       </div>
     );
