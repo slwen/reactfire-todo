@@ -2,6 +2,8 @@
 
 Todo application built with React and Firebase, written with ES6 syntax.
 
+[Demo](http://slwen.github.io/reactfire-todo)
+
 ## Get Started
 
 1. Clone, install and set up:
