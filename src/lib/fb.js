@@ -22,7 +22,6 @@ export function auth(callback) {
  * Connect to Firebase API.
  * Returns a connection to Firebase root or a specific record.
  */
-export function connect(uid, record) {
-  let r = record ? record : '';
-  return new Firebase(rootUrl + 'users/' + uid + '/' + r);
+export function connect(uid, record = '') {
+  return new Firebase(`${rootUrl}users/${uid}/${record}`);
 }

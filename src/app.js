@@ -15,7 +15,7 @@ var App = React.createClass({
   mixins: [ ReactFire ],
 
   getInitialState() {
-    let user = ls.get('user');
+    const user = ls.get('user');
 
     return {
       items: {},
@@ -65,22 +65,22 @@ var App = React.createClass({
   },
 
   render() {
-    let state = this.state;
+    const { user, loaded, items } = this.state;
 
-    if (this.state.user && this.state.loaded) {
+    if (user && loaded) {
       return (
         <div className="App App--signed-in">
-          <Header name={ this.state.user.github.displayName } />
+          <Header name={ user.github.displayName } />
           <List
             itemStore={ this.firebaseRefs.items }
             items={ this.state.items }
             clear={ this.handleBulkDelete }
-            uid={ this.state.user.auth.uid } />
+            uid={ user.auth.uid } />
         </div>
       );
     }
 
-    if (this.state.user && !this.state.loaded) {
+    if (user && !loaded) {
       return (
         <div className="App App--loading">
           <div className="App__loading-body">

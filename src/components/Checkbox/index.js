@@ -14,7 +14,7 @@ export default React.createClass({
   },
 
   render() {
-    let checkedClass = this.props.checked ? 'Checkbox__svg--checked' : '';
+    const checkedClass = this.props.checked ? 'Checkbox__svg--checked' : '';
 
     return (
       <label className="Checkbox">

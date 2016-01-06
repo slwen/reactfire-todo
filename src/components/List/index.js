@@ -17,7 +17,7 @@ export default React.createClass({
   },
 
   updateScroll() {
-    var node = this.refs.listItems.getDOMNode();
+    let node = this.refs.listItems.getDOMNode();
     setTimeout(() => {
       node.scrollTop = node.scrollHeight;
     }, 50);
@@ -41,14 +41,14 @@ export default React.createClass({
           done={ item.done }
           uid={ this.props.uid }
           id={ key }
-          key={ "item-" + key } />
+          key={ `item-${key}` } />
       );
     });
   },
 
   render() {
-    let completed = this.completedCounter(this.props.items);
-    let hasCompletedClass = completed ? 'List--hasCompleted' : '';
+    const completed = this.completedCounter(this.props.items);
+    const hasCompletedClass = completed ? 'List--hasCompleted' : '';
 
     if (isEmpty(this.props.items)) {
       return (
@@ -59,7 +59,7 @@ export default React.createClass({
     }
 
     return (
-      <div className={ "List " + hasCompletedClass }>
+      <div className={ `List ${hasCompletedClass}` }>
         <ul className="List__list-items" ref="listItems">
           <ReactCSSTransitionGroup transitionName="Todo">
             { this.renderTodos() }

@@ -26,7 +26,7 @@ export default React.createClass({
   },
 
   handleChecked(e) {
-    let update = { done: e.target.checked }
+    const update = { done: e.target.checked }
     this.setState(update);
     this.fb.update(update);
   },
@@ -36,7 +36,7 @@ export default React.createClass({
   },
 
   handleEdit(e) {
-    let value = e.target.value;
+    const value = e.target.value;
 
     this.setState({
       text: value,
@@ -63,7 +63,7 @@ export default React.createClass({
   },
 
   render() {
-    let doneClass = this.state.done ? 'Todo__input--done' : '';
+    const doneClass = this.state.done ? 'Todo__input--done' : '';
 
     return (
       <li className="Todo">
@@ -78,7 +78,7 @@ export default React.createClass({
           value={ this.state.text }
           onChange={ this.handleEdit }
           onBlur={ this.handleSave }
-          className={ "Todo__input " + doneClass } />
+          className={ `Todo__input ${doneClass}` } />
 
         { this.renderActionButton() }
       </li>
