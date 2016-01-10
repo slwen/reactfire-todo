@@ -43,7 +43,7 @@ gulp.task('clean', function(cb){
 });
 
 gulp.task('lint', function () {
-  return gulp.src(['./src/*.js'])
+  return gulp.src(['./src/**/*.js'])
     .pipe(eslint({ useEslintrc: true }))
     .pipe(eslint.format())
 });
