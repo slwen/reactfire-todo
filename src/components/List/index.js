@@ -12,7 +12,8 @@ export default React.createClass({
   propTypes: {
     items: React.PropTypes.object,
     uid: React.PropTypes.string.isRequired,
-    clear: React.PropTypes.func.isRequired
+    clear: React.PropTypes.func.isRequired,
+    itemStore: React.PropTypes.object.isRequired
   },
 
   updateScroll() {
