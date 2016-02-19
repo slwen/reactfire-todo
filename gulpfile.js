@@ -15,7 +15,7 @@ var eslint       = require('gulp-eslint');
 var sass         = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var rimraf       = require('rimraf');
-var assign       = require('lodash/object/assign');
+var assign       = require('lodash/assign');
 var browserSync  = require('browser-sync');
 var imagemin     = require('gulp-imagemin');
 
