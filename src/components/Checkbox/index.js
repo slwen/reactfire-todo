@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-import React from 'react';
+import React from 'react'
 
 export default React.createClass({
   displayName: 'Checkbox',
@@ -10,11 +10,11 @@ export default React.createClass({
   },
 
   handleCheck(e) {
-    this.props.onChange(e);
+    this.props.onChange(e)
   },
 
   render() {
-    const checkedClass = this.props.checked ? 'Checkbox__svg--checked' : '';
+    const checkedClass = this.props.checked ? 'Checkbox__svg--checked' : ''
 
     return (
       <label className="Checkbox">
@@ -30,6 +30,6 @@ export default React.createClass({
           </svg>
         </div>
       </label>
-    );
+    )
   }
-});
+})

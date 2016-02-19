@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-import React from 'react';
-import { connect } from '../../lib/fb';
-import Checkbox from '../Checkbox';
+import React from 'react'
+import { connect } from '../../lib/fb'
+import Checkbox from '../Checkbox'
 
 export default React.createClass({
   displayName: 'Todo',
@@ -18,36 +18,36 @@ export default React.createClass({
       text: this.props.text,
       done: this.props.done,
       edited: false
-    };
+    }
   },
 
   componentWillMount() {
-    this.fb = connect(this.props.uid, this.props.id);
+    this.fb = connect(this.props.uid, this.props.id)
   },
 
   handleChecked(e) {
     const update = { done: e.target.checked }
-    this.setState(update);
-    this.fb.update(update);
+    this.setState(update)
+    this.fb.update(update)
   },
 
   handleDelete() {
-    this.fb.remove();
+    this.fb.remove()
   },
 
   handleEdit(e) {
-    const value = e.target.value;
+    const value = e.target.value
 
     this.setState({
       text: value,
       edited: !!value && value !== this.props.text
-    });
+    })
   },
 
   handleSave() {
     if (this.state.edited) {
-      this.fb.update({ text: this.state.text });
-      this.setState({ edited: false });
+      this.fb.update({ text: this.state.text })
+      this.setState({ edited: false })
     }
   },
 
@@ -59,11 +59,11 @@ export default React.createClass({
         className="Todo__delete-btn">
         <img src="images/trash.svg" />
       </button>
-    );
+    )
   },
 
   render() {
-    const doneClass = this.state.done ? 'Todo__input--done' : '';
+    const doneClass = this.state.done ? 'Todo__input--done' : ''
 
     return (
       <li className="Todo">
@@ -82,6 +82,6 @@ export default React.createClass({
 
         { this.renderActionButton() }
       </li>
-    );
+    )
   }
-});
+})

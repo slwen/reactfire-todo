@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-import React from 'react';
+import React from 'react'
 
 export default React.createClass({
   displayName: 'SignIn',
@@ -9,7 +9,7 @@ export default React.createClass({
   },
 
   handleClick() {
-    this.props.handleClick();
+    this.props.handleClick()
   },
 
   render() {
@@ -26,6 +26,6 @@ export default React.createClass({
           </button>
         </div>
       </div>
-    );
+    )
   }
-});
+})

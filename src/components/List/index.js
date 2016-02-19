@@ -1,11 +1,11 @@
-'use strict';
+'use strict'
 
-import React from 'react/addons';
-import { map, isEmpty } from 'lodash';
-import AddTodo from '../AddTodo';
-import Todo from '../Todo';
+import React from 'react/addons'
+import { map, isEmpty } from 'lodash'
+import AddTodo from '../AddTodo'
+import Todo from '../Todo'
 
-const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
 
 export default React.createClass({
   displayName: 'List',
@@ -17,20 +17,20 @@ export default React.createClass({
   },
 
   updateScroll() {
-    let node = this.refs.listItems.getDOMNode();
+    let node = this.refs.listItems.getDOMNode()
     setTimeout(() => {
-      node.scrollTop = node.scrollHeight;
-    }, 50);
+      node.scrollTop = node.scrollHeight
+    }, 50)
   },
 
   completedCounter(items) {
-    let completedCount = 0;
+    let completedCount = 0
 
     for (let key in items) {
-      if (items[key].done) completedCount++;
+      if (items[key].done) completedCount++
     }
 
-    return completedCount;
+    return completedCount
   },
 
   renderTodos() {
@@ -42,20 +42,20 @@ export default React.createClass({
           uid={ this.props.uid }
           id={ key }
           key={ `item-${key}` } />
-      );
-    });
+      )
+    })
   },
 
   render() {
-    const completed = this.completedCounter(this.props.items);
-    const hasCompletedClass = completed ? 'List--hasCompleted' : '';
+    const completed = this.completedCounter(this.props.items)
+    const hasCompletedClass = completed ? 'List--hasCompleted' : ''
 
     if (isEmpty(this.props.items)) {
       return (
         <div className="List List--empty">
           <AddTodo itemsStore={ this.props.itemStore } />
         </div>
-      );
+      )
     }
 
     return (
@@ -83,6 +83,6 @@ export default React.createClass({
 
         </button>
       </div>
-    );
+    )
   }
-});
+})

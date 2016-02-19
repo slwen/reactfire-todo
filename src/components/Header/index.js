@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-import React from 'react';
+import React from 'react'
 
 export default React.createClass({
   displayName: 'Header',
@@ -14,7 +14,7 @@ export default React.createClass({
         <span className="Header__name">
           { this.props.name }
         </span>
-      );
+      )
     }
   },
 
@@ -24,6 +24,6 @@ export default React.createClass({
         <h1 className="Header__title">Todos</h1>
         { this.renderName() }
       </div>
-    );
+    )
   }
-});
+})

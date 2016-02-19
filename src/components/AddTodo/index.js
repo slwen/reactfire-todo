@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-import React from 'react';
+import React from 'react'
 
 export default React.createClass({
   displayName: 'AddTodo',
@@ -10,25 +10,25 @@ export default React.createClass({
   },
 
   getInitialState() {
-    return { text: '' };
+    return { text: '' }
   },
 
   handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
 
     if (this.state.text !== '') {
       this.props.itemsStore.push({
         text: this.state.text,
         done: false
-      });
+      })
 
-      this.setState({ text: '' });
-      this.props.updateScroll();
+      this.setState({ text: '' })
+      this.props.updateScroll()
     }
   },
 
   handleInputChange(e) {
-    this.setState({ text: e.target.value });
+    this.setState({ text: e.target.value })
   },
 
   render() {
@@ -50,6 +50,6 @@ export default React.createClass({
           </button>
         </span>
       </form>
-    );
+    )
   }
-});
+})

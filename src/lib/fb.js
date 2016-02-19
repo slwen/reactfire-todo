@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-import Firebase from 'firebase';
+import Firebase from 'firebase'
 
-const rootUrl = 'https://amber-fire-8830.firebaseio.com/';
-const ref     = new Firebase(rootUrl);
+const rootUrl = 'https://amber-fire-8830.firebaseio.com/'
+const ref     = new Firebase(rootUrl)
 
 /**
  * Authenticate user with GitHub.
@@ -11,11 +11,11 @@ const ref     = new Firebase(rootUrl);
 export function auth(callback) {
   ref.authWithOAuthPopup('github', (error, authData) => {
     if (error) {
-      console.log('Login Failed!', error);
+      console.log('Login Failed!', error)
     }
 
-    callback(authData);
-  });
+    callback(authData)
+  })
 }
 
 /**
@@ -23,5 +23,5 @@ export function auth(callback) {
  * Returns a connection to Firebase root or a specific record.
  */
 export function connect(uid, record = '') {
-  return new Firebase(`${rootUrl}users/${uid}/${record}`);
+  return new Firebase(`${rootUrl}users/${uid}/${record}`)
 }
