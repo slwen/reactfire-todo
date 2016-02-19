@@ -1,14 +1,13 @@
 'use strict'
 
 import React from 'react'
+import ReactDOM from 'react-dom'
 import ReactFire from 'reactfire'
 import ls from 'local-storage'
 import { auth, connect } from './lib/fb'
 import Header from './components/Header'
 import SignIn from './components/SignIn'
 import List from './components/List'
-
-const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
 
 const App = React.createClass({
   displayName: 'App',
@@ -99,4 +98,4 @@ const App = React.createClass({
   }
 })
 
-React.render(<App />, document.querySelector('#app'))
+ReactDOM.render(<App />, document.querySelector('#app'))

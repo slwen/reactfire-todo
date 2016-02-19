@@ -1,11 +1,10 @@
 'use strict'
 
-import React from 'react/addons'
+import React from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { map, isEmpty } from 'lodash'
 import AddTodo from '../AddTodo'
 import Todo from '../Todo'
-
-const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
 
 export default React.createClass({
   displayName: 'List',
