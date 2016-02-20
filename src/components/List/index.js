@@ -9,7 +9,7 @@ import Todo from '../Todo'
 export default React.createClass({
   displayName: 'List',
   propTypes: {
-    items: React.PropTypes.object,
+    items: React.PropTypes.array,
     uid: React.PropTypes.string.isRequired,
     clear: React.PropTypes.func.isRequired,
     itemStore: React.PropTypes.object.isRequired
@@ -39,7 +39,7 @@ export default React.createClass({
           text={ item.text }
           done={ item.done }
           uid={ this.props.uid }
-          id={ key }
+          id={ item['.key'] }
           key={ `item-${key}` } />
       )
     })

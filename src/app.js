@@ -34,7 +34,7 @@ const App = React.createClass({
   firebaseConnect() {
     if (this.state.user) {
       this.fb = connect(this.state.user.auth.uid)
-      this.bindAsObject(this.fb, 'items', this.firebaseDisconnect)
+      this.bindAsArray(this.fb, 'items', this.firebaseDisconnect)
       this.fb.on('value', this.handleDataLoaded)
     }
   },
