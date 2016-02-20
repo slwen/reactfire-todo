@@ -52,7 +52,9 @@ export default React.createClass({
     if (isEmpty(this.props.items)) {
       return (
         <div className="List List--empty">
-          <AddTodo itemsStore={ this.props.itemStore } />
+          <AddTodo
+            itemsStore={ this.props.itemStore }
+            updateScroll={ this.updateScroll } />
         </div>
       )
     }
