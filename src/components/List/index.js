@@ -62,7 +62,10 @@ export default React.createClass({
     return (
       <div className={ `List ${hasCompletedClass}` }>
         <ul className="List__list-items" ref="listItems">
-          <ReactCSSTransitionGroup transitionName="Todo">
+          <ReactCSSTransitionGroup
+            transitionName="Todo"
+            transitionEnterTimeout={ 400 }
+            transitionLeaveTimeout={ 400 }>
             { this.renderTodos() }
           </ReactCSSTransitionGroup>
         </ul>
