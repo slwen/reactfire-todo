@@ -16,7 +16,7 @@ export default React.createClass({
   },
 
   updateScroll() {
-    let node = this.refs.listItems.getDOMNode()
+    let node = this.refs.listItems
     setTimeout(() => {
       node.scrollTop = node.scrollHeight
     }, 50)
