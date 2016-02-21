@@ -44,11 +44,15 @@ const App = React.createClass({
   },
 
   handleBulkDelete() {
-    for (let key in this.state.items) {
-      if (this.state.items[key].done) {
-        this.fb.child(key).remove()
+    let batch = {}
+
+    this.state.items.forEach(item => {
+      if (item.done) {
+        batch[item['.key']] = null
       }
-    }
+    })
+
+    this.fb.update(batch)
   },
 
   handleAuth() {
