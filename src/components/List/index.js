@@ -33,14 +33,14 @@ export default React.createClass({
   },
 
   renderTodos() {
-    return map(this.props.items, (item, key) => {
+    return map(this.props.items, (item) => {
       return (
         <Todo
           text={ item.text }
           done={ item.done }
           uid={ this.props.uid }
           id={ item['.key'] }
-          key={ `item-${key}` } />
+          key={ item['.key'] } />
       )
     })
   },
