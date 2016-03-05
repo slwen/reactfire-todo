@@ -1,8 +1,15 @@
 {
   "name": "reactfire-todo",
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "repository" : {
+    "type": "git",
+    "url": "https://github.com/slwen/reactfire-todo.git"
+  },
   "description": "Todo application built with React and Firebase, written in ES6.",
   "main": "app.js",
+  "engines": {
+    "node": "~5.0.0"
+  },
   "scripts": {
     "setup": "npm install && gulp serve",
     "start": "gulp clean && gulp serve",
