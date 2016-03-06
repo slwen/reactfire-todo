@@ -44,5 +44,28 @@
         "rendering"
       ]
     }]
+  },
+  "globals": {
+    "describe": 1,
+    "context": 1,
+    "before": 1,
+    "beforeEach": 1,
+    "after": 1,
+    "it": 1,
+    "React": 1,
+    "chai": 1,
+    "should": 1,
+    "expect": 1,
+    "AssertionError": 1,
+    "sinon": 1,
+    "TestUtils": 1,
+    "Simulate": 1,
+    "renderIntoDocument": 1,
+    "scryByType": 1,
+    "findByType": 1,
+    "scryByClass": 1,
+    "findByClass": 1,
+    "scryByTag": 1,
+    "findByTag": 1
   }
 }
