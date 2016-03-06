@@ -3,7 +3,7 @@
 import Header from '../'
 import { render } from 'enzyme'
 
-let component;
+let component
 
 describe('Header component', () => {
   before(() => {

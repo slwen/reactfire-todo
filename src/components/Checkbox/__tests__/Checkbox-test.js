@@ -3,7 +3,7 @@
 import Checkbox from '../'
 import { mount, shallow } from 'enzyme'
 
-let component;
+let component
 
 describe('Checkbox component', () => {
   before(() => {
