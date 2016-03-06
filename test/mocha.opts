@@ -1,0 +1,4 @@
+--recursive
+--compilers js:babel-core/register
+--ui bdd
+--require test/helper.js
