@@ -31,6 +31,6 @@ describe('List component', () => {
     it('counts the number of completed items', () => {
       component = renderIntoDocument(<List { ...mockProps } />)
       component.completedCounter(mockProps.items).should.equal(1)
-    });
-  });
+    })
+  })
 })
