@@ -1,5 +1,7 @@
 # Reactfire Todo
 
+[![Build Status](https://travis-ci.org/slwen/reactfire-todo.svg?branch=master)](https://travis-ci.org/slwen/reactfire-todo)
+
 Todo application built with React and Firebase, written with ES6 syntax.
 
 [Demo](http://slwen.github.io/reactfire-todo)
