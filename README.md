@@ -18,7 +18,7 @@ Todo application built with React and Firebase, written with ES6 syntax.
 
 2. View on: `http://localhost:3000/`
 
-3. If you have your own Firebase URL you can set it in `./src/lib/fb.js`.
+3. If you have your own Firebase URL you can set the store name in `./src/firebase-config.js`.
 
 ### Commands
 
