@@ -1,7 +1,7 @@
 'use strict'
 
 import Firebase from 'firebase'
-import fbStoreName from '../firebase-app-name'
+import fbStoreName from '../firebase-config'
 
 const rootUrl = `https://${fbStoreName}.firebaseio.com/`
 const ref     = new Firebase(rootUrl)

@@ -9,7 +9,7 @@ import Header from './components/Header'
 import SignIn from './components/SignIn'
 import List from './components/List'
 
-import fbStoreName from './firebase-app-name'
+import fbStoreName from './firebase-config'
 
 const App = React.createClass({
   displayName: 'App',
