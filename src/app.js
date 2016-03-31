@@ -9,34 +9,32 @@ import Header from './components/Header'
 import SignIn from './components/SignIn'
 import List from './components/List'
 
+import fbStoreName from './firebase-app-name'
+
 const App = React.createClass({
   displayName: 'App',
   mixins: [ ReactFire ],
 
   getInitialState() {
-    const user = ls.get('user')
-
     return {
       items: {},
       loaded: false,
-      user: (user && user.expires < Date.now()) ? user : null
+      session: ls.get(`firebase:session::${fbStoreName}`)
     }
   },
 
   componentWillMount() {
-    this.firebaseConnect()
+    if (this.state.session) this.firebaseConnect()
   },
 
   firebaseDisconnect() {
-    this.setState({ user: null })
+    this.setState({ session: null })
   },
 
   firebaseConnect() {
-    if (this.state.user) {
-      this.fb = connect(this.state.user.auth.uid)
-      this.bindAsArray(this.fb, 'items', this.firebaseDisconnect)
-      this.fb.on('value', this.handleDataLoaded)
-    }
+    this.fb = connect(this.state.session.auth.uid)
+    this.bindAsArray(this.fb, 'items', this.firebaseDisconnect)
+    this.fb.on('value', this.handleDataLoaded)
   },
 
   handleDataLoaded() {
@@ -56,34 +54,31 @@ const App = React.createClass({
   },
 
   handleAuth() {
-    if (this.state.user) {
-      console.log('already logged in')
-    } else {
-      auth((user) => {
-        this.setState({ user })
-        ls.set('user', user)
+    if (!this.state.session) {
+      auth((session) => {
+        this.setState({ session })
         this.firebaseConnect()
       })
     }
   },
 
   render() {
-    const { user, loaded, items } = this.state
+    const { session, loaded, items } = this.state
 
-    if (user && loaded) {
+    if (session && loaded) {
       return (
         <div className="App App--signed-in">
-          <Header name={ user.github.displayName } />
+          <Header name={ session.github.displayName } />
           <List
             itemStore={ this.firebaseRefs.items }
             items={ this.state.items }
             clear={ this.handleBulkDelete }
-            uid={ user.auth.uid } />
+            uid={ session.auth.uid } />
         </div>
       )
     }
 
-    if (user && !loaded) {
+    if (session && !loaded) {
       return (
         <div className="App App--loading">
           <div className="App__loading-body">
