@@ -49,7 +49,7 @@
     "gulp-eslint": "^3.0.0",
     "gulp-gh-pages": "^0.5.2",
     "gulp-if": "^2.0.0",
-    "gulp-imagemin": "^3.0.0",
+    "gulp-imagemin": "^3.0.3",
     "gulp-minify-css": "^1.2.4",
     "gulp-sass": "^2.0.4",
     "gulp-uglify": "^2.0.0",
