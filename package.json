@@ -54,7 +54,7 @@
     "gulp-sass": "^2.0.4",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.6",
-    "jsdom": "^9.0.0",
+    "jsdom": "^9.8.2",
     "mocha": "^3.0.0",
     "react-addons-test-utils": "^15.0.1",
     "rimraf": "^2.4.2",
