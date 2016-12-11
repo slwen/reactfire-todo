@@ -51,7 +51,7 @@
     "gulp-if": "^2.0.0",
     "gulp-imagemin": "^3.0.0",
     "gulp-minify-css": "^1.2.4",
-    "gulp-sass": "^2.0.4",
+    "gulp-sass": "^3.0.0",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.6",
     "jsdom": "^9.8.2",
