@@ -22,7 +22,7 @@
   "author": "Sam Enoka",
   "license": "ISC",
   "dependencies": {
-    "firebase": "^2.2.9",
+    "firebase": "^3.7.3",
     "local-storage": "^1.4.2",
     "lodash": "^4.6.1",
     "react": "^15.0.1",
