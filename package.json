@@ -8,7 +8,7 @@
   "description": "Todo application built with React and Firebase, written in ES6.",
   "main": "app.js",
   "engines": {
-    "node": "~5.0.0"
+    "node": "~7.0.0"
   },
   "scripts": {
     "setup": "npm install && gulp serve",
