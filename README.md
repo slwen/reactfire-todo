@@ -13,7 +13,7 @@ Todo application built with React and Firebase, written with ES6 syntax.
   ```sh
   $ git clone https://github.com/slwen/reactfire-todo.git
   $ cd reactfire-todo
-  $ npm run setup
+  $ yarn run setup
   ```
 
 2. View on: `http://localhost:3000/`
@@ -23,11 +23,11 @@ Todo application built with React and Firebase, written with ES6 syntax.
 ### Commands
 
 ```sh
-$ npm run setup      # Install dependencies, start server and watch.
-$ npm run start      # Start a local server and watch task.
-$ npm run build      # Build public assets.
-$ npm run lint       # Run eslint.
-$ npm run deploy     # Deploy files to gh-pages branch.
-$ npm run test       # Run component tests
-$ npm run watch-test # Run component tests in watch mode
+$ yarn run setup      # Install dependencies, start server and watch.
+$ yarn run start      # Start a local server and watch task.
+$ yarn run build      # Build public assets.
+$ yarn run lint       # Run eslint.
+$ yarn run deploy     # Deploy files to gh-pages branch.
+$ yarn run test       # Run component tests
+$ yarn run watch-test # Run component tests in watch mode
 ```
