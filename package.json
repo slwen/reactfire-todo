@@ -42,7 +42,7 @@
     "chai": "^3.5.0",
     "enzyme": "^2.1.0",
     "eslint": "~3.19.0",
-    "eslint-plugin-react": "^6.0.0",
+    "eslint-plugin-react": "^7.0.1",
     "gh-pages-deploy": "^0.4.1",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
